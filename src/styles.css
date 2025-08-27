@@ -53,6 +53,28 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+   /*  Paleta Primary */
+  --color-primary-100: #f0f9ff;
+  --color-primary-200: #e0f2fe;
+  --color-primary-300: #bae6fd;
+  --color-primary-400: #7dd3fc;
+  --color-primary-500: #38bdf8;
+  --color-primary-600: #0ea5e9;
+  --color-primary-700: #0284c7;
+  --color-primary-800: #0369a1;
+  --color-primary-900: #075985;
+
+  /*  Paleta Secondary */
+  --color-secondary-100: #fdf2f8;
+  --color-secondary-200: #fce7f3;
+  --color-secondary-300: #fbcfe8;
+  --color-secondary-400: #f9a8d4;
+  --color-secondary-500: #f472b6;
+  --color-secondary-600: #ec4899;
+  --color-secondary-700: #db2777;
+  --color-secondary-800: #be185d;
+  --color-secondary-900: #9d174d;
 }
 
 :root {
