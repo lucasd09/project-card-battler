@@ -16,6 +16,7 @@ export const FormInputBase = <TForm extends FieldValues>({
   label,
   isSkeleton,
   children,
+  labelClassName
 }: FormInputBaseProps<TForm>) => {
   if (!form) {
     return children({});
@@ -27,7 +28,7 @@ export const FormInputBase = <TForm extends FieldValues>({
       control={form.control}
       render={(renderParams) => (
         <FormItem>
-          <FormLabel>{label ?? uppercaseFirstLetter(name as string)}</FormLabel>
+          <FormLabel className={labelClassName}>{label ?? uppercaseFirstLetter(name as string)}</FormLabel>
 
           {isSkeleton ? (
             <Skeleton className="w-full h-8" />

@@ -16,4 +16,5 @@ export type FormInputBaseChildrenProps<TForm extends FieldValues> = {
 export type FormInputBaseProps<TForm extends FieldValues> =
   InputDefaultProps<TForm> & {
     children: (props: Partial<FormInputBaseChildrenProps<TForm>>) => ReactNode;
+    labelClassName?: string
   };

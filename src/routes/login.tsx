@@ -1,6 +1,9 @@
+import { Form } from '@/components/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useZodForm } from '@/lib/hooks/use-zod-form'
 import { createFileRoute } from '@tanstack/react-router'
+import { z } from 'zod'
 
 
 export const Route = createFileRoute('/login')({
@@ -8,6 +11,19 @@ export const Route = createFileRoute('/login')({
 })
 
 function RouteComponent() {
+
+  const signInFormSchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+
+  });
+
+  const form = useZodForm({ schema: signInFormSchema });
+
+  const handleSubmit = (data: z.infer<typeof signInFormSchema>) => {
+    console.log(data)
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
 
@@ -25,42 +41,42 @@ function RouteComponent() {
         />
       </div>
 
-
-      <div className="relative z-10 w-[420px] rounded-2xl border-[6px] border-[#6b3c1d] bg-[#3d2411] shadow-2xl p-6">
+      <div className="relative z-10 w-[420px] rounded-2xl border-[6px] border-yellow-700 bg-[#3d2412] shadow-2xl p-6">
         <h2 className="text-center text-3xl font-bold text-[#f8e4b2] mb-6 tracking-wide">
           LOGIN
         </h2>
-        <form className="flex flex-col gap-5">
+        <Form
+          form={form}
+          onSubmit={handleSubmit}
+          className='flex flex-col'
+        >
+          <Input
+            name="email"
+            form={form}
+            className="bg-[#2a1a0f] border-2 border-[#5c3a23] text-[#f8e4b2] placeholder:text-[#c1a97d] focus:outline-none"
+            labelClassName='text-white'
+          />
+          <Input
+            name="password"
+            type="password"
+            form={form}
+            className="bg-[#2a1a0f] border-2 border-[#5c3a23] text-[#f8e4b2] placeholder:text-[#c1a97d] focus:outline-none"
+            labelClassName='text-white'
+          />
 
-          <div className="bg-[#2a1a0f] border-2 border-[#5c3a23] rounded-lg px-3 py-2">
-            <input
-              placeholder="USERNAME"
-              className="w-full bg-transparent text-[#f8e4b2] placeholder:text-[#c1a97d] border-none focus:outline-none"
-            />
-          </div>
-
-
-
-          <div className="bg-[#2a1a0f] border-2 border-[#5c3a23] rounded-lg px-3 py-2">
-            <input
-              type="password"
-              placeholder="PASSWORD"
-              className="w-full bg-transparent text-[#f8e4b2] placeholder:text-[#c1a97d] border-none focus:outline-none"
-            />
-          </div>
-
-
-
-          <button className="bg-gradient-to-b from-[#ff7a1c] to-[#d94c00] border-2 border-[#8c2f00] rounded-lg py-3 text-lg font-extrabold text-[#fff4d7] shadow-md hover:brightness-110">
+          <Button
+            className='bg-gradient-to-b from-[#ff7a1c] to-[#d94c00] border-2 border-[#8c2f00] rounded-lg py-3 text-lg font-extrabold text-[#fff4d7] shadow-md hover:brightness-110'
+            type='submit'
+          >
             LOGIN
-          </button>
-
-
+          </Button>
 
           <p className="text-center text-sm text-[#f8e4b2] hover:underline cursor-pointer mt-2">
             Forgot Password?
           </p>
-        </form>
+
+        </Form>
+
       </div>
     </div>
   )
