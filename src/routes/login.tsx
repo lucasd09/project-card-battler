@@ -2,7 +2,7 @@ import { Form } from '@/components/form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useZodForm } from '@/lib/hooks/use-zod-form'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { z } from 'zod'
 
 
@@ -52,16 +52,19 @@ function RouteComponent() {
         >
           <Input
             name="email"
+            type="email"
             form={form}
+            placeholder="E-mail"
             className="bg-[#2a1a0f] border-2 border-[#5c3a23] text-[#f8e4b2] placeholder:text-[#c1a97d] focus:outline-none"
-            labelClassName='text-white'
+            labelClassName="text-white"
           />
           <Input
             name="password"
             type="password"
             form={form}
+            placeholder="Senha"
             className="bg-[#2a1a0f] border-2 border-[#5c3a23] text-[#f8e4b2] placeholder:text-[#c1a97d] focus:outline-none"
-            labelClassName='text-white'
+            labelClassName="text-white"
           />
 
           <Button
@@ -71,8 +74,14 @@ function RouteComponent() {
             LOGIN
           </Button>
 
-          <p className="text-center text-sm text-[#f8e4b2] hover:underline cursor-pointer mt-2">
-            Forgot Password?
+          <p className="text-center text-sm text-[#f8e4b2] mt-2">
+            Não tem conta?{' '}
+            <Link
+              to="/register"
+              className="hover:underline text-yellow-300 cursor-pointer"
+            >
+              Registrar
+            </Link>
           </p>
 
         </Form>
