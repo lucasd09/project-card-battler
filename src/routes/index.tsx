@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
@@ -15,9 +15,9 @@ function App() {
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-primary-800 via-primary-700 to-secondary-600 text-foreground">
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 12 }).map((_, i) => (
+        {Array.from({ length: 12 }).map((_, index) => (
           <motion.div
-            key={i}
+            key={index}
             className="absolute w-24 h-36 bg-card/20 border border-border rounded-xl shadow-lg"
             initial={{ y: "100vh", x: Math.random() * window.innerWidth, opacity: 0 }}
             animate={{
@@ -35,14 +35,14 @@ function App() {
         ))}
       </div>
 
-      <motion.h1
-        className="text-6xl font-extrabold drop-shadow-lg text-primary-100 mb-12"
+      <motion.img
+        src="logo.png"
+        alt="Card Battle Logo"
+        className="h-auto w-64 object-fill"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        Card Battler
-      </motion.h1>
+      />
 
 
       <motion.div
@@ -53,22 +53,27 @@ function App() {
         <Card className="bg-card/80 backdrop-blur-md shadow-xl rounded-2xl p-6 w-72 space-y-4 text-center">
           <CardContent className="flex flex-col gap-4">
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Button className="w-full text-lg">Jogar</Button>
+              <Button asChild className="w-full text-lg">
+                <Link to="/login">Jogar</Link>
+              </Button>
             </motion.div>
+
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Button variant="secondary" className="w-full text-lg">Inventário</Button>
+              <Button asChild variant="secondary" className="w-full text-lg">
+                <Link to="/">Loja</Link>
+              </Button>
             </motion.div>
+
             <motion.div whileHover={{ scale: 1.05 }}>
-              <Button variant="secondary" className="w-full text-lg">Loja</Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Button variant="secondary" className="w-full text-lg">Arena</Button>
+              <Button asChild variant="secondary" className="w-full text-lg">
+                <Link to="/">Arena</Link>
+              </Button>
             </motion.div>
           </CardContent>
         </Card>
       </motion.div>
 
-      {/* Rodapé */}
+
       <motion.p
         className="absolute bottom-4 text-sm text-muted-foreground"
         initial={{ opacity: 0 }}
