@@ -1,5 +1,5 @@
-import { db } from "@/db";
 import { eq, getTableColumns, inArray } from "drizzle-orm";
+import { db } from "@/db";
 import { BaseService, BaseTable } from "./types";
 
 export const createService = <
