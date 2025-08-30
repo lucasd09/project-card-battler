@@ -1,5 +1,5 @@
-import { Nullable } from "@/lib/types";
 import { ZodSchema, z } from "zod";
+import { Nullable } from "@/lib/types";
 
 export type UseZodFormOptions<TSchema extends ZodSchema> = {
   schema: TSchema;

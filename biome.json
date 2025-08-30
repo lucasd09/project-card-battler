@@ -10,25 +10,69 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"attributePosition": "multiline"
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
+		}
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"complexity": {
+				"noForEach": "error",
+				"noBannedTypes": "error",
+				"noStaticOnlyClass": "error",
+				"noUselessFragments": "error",
+				"noVoid": "error"
+			},
+			"a11y": {
+				"useMediaCaption": "off"
+			},
+			"correctness": {
+				"noUnreachable": "error",
+				"noUnusedVariables": "error",
+				"noConstAssign": "error",
+				"noUndeclaredVariables": "error",
+				"noUnusedPrivateClassMembers": "error",
+				"useHookAtTopLevel": "error",
+				"noUnusedImports": "error"
+			},
+			"performance": {
+				"noDelete": "error",
+				"noAccumulatingSpread": "error",
+				"noBarrelFile": "error"
+			},
+			"style": {
+				"noNonNullAssertion": "error",
+				"useBlockStatements": "error",
+				"useTemplate": "error",
+				"noParameterAssign": "error",
+				"useConst": "error",
+				"useEnumInitializers": "error",
+				"useImportType": "off"
+			},
+			"suspicious": {
+				"noDebugger": "error",
+				"noEmptyInterface": "error",
+				"noExplicitAny": "off",
+				"noRedundantUseStrict": "error",
+				"noShadowRestrictedNames": "error",
+				"noArrayIndexKey": "off",
+				"noUnknownAtRules": "off"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
+			"enabled": true,
+			"indentStyle": "space",
+			"attributePosition": "multiline"
 		}
 	}
 }

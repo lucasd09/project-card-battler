@@ -1,9 +1,9 @@
-import { FormInputBase } from "@/components/form/components/form-input-base";
-import { fixedForwardRef } from "@/lib/react";
-import { cn } from "@/lib/utils";
 import { Eye, EyeOff } from "lucide-react";
 import { ChangeEvent, ForwardedRef, useState } from "react";
 import { FieldValues } from "react-hook-form";
+import { FormInputBase } from "@/components/form/components/form-input-base";
+import { fixedForwardRef } from "@/lib/react";
+import { cn } from "@/lib/utils";
 import { InputProps, InputRef } from "./types";
 
 const InputBase = <TForm extends FieldValues>(
