@@ -5,7 +5,7 @@ import { useZodForm } from "@/lib/hooks/use-zod-form";
 import { Link } from "@tanstack/react-router";
 import { registerFormSchema } from "./consts";
 import { RegisterFormData } from "./types";
-import { authClient } from "@/lib/client";
+import { authClient } from "@/lib/auth-client";
 import { BASE_URL } from "@/lib/utils";
 
 export const RegisterForm = () => {

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useZodForm } from "@/lib/hooks/use-zod-form";
 import { LoginFormData } from "./types";
 import { signInFormSchema } from "./consts";
-import { authClient } from "@/lib/client";
+import { authClient } from "@/lib/auth-client";
 import { BASE_URL } from "@/lib/utils";
 
 export const LoginForm = () => {
