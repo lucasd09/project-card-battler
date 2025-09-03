@@ -1,20 +1,44 @@
 import { Button } from '@/components/ui/button'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, redirect } from '@tanstack/react-router'
 import {
   Card,
   CardContent,
 } from "@/components/ui/card"
 import { motion } from 'framer-motion'
+import { requireAuth } from '@/fn/require-auth';
+import { authClient } from '@/lib/auth-client';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: App,
-})
+  beforeLoad: async () => {
+    const data = await requireAuth();
+
+    if (!data) {
+      throw redirect({ to: '/login' })
+    }
+
+    return data;
+  }
+});
 
 function App() {
-  return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-primary-800 via-primary-700 to-secondary-600 text-foreground">
+  const handleLogout = async () => {
+    console.log('logging out');
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    await authClient.signOut({});
+
+    return redirect({ to: '/login' });
+  }
+  return (
+    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden text-foreground">
+
+      <img
+        src="fundo.png"
+        alt="background"
+        className="absolute inset-0 w-full h-full object-fill opacity-80"
+      />
+
+      <div className="absolute inset-1 overflow-hidden pointer-events-none w-full">
         {Array.from({ length: 12 }).map((_, index) => (
           <motion.div
             key={index}
@@ -38,7 +62,7 @@ function App() {
       <motion.img
         src="logo.png"
         alt="Card Battle Logo"
-        className="h-auto w-64 object-fill"
+        className="h-auto w-64 object-fill z-10"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -54,7 +78,7 @@ function App() {
           <CardContent className="flex flex-col gap-4">
             <motion.div whileHover={{ scale: 1.05 }}>
               <Button asChild className="w-full text-lg">
-                <Link to="/login">Jogar</Link>
+                <Link to="/">Jogar</Link>
               </Button>
             </motion.div>
 
@@ -66,8 +90,11 @@ function App() {
 
             <motion.div whileHover={{ scale: 1.05 }}>
               <Button asChild variant="secondary" className="w-full text-lg">
-                <Link to="/">Arena</Link>
+                <Link to="/">Inventario</Link>
               </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Button onClick={handleLogout}>LOGOUT</Button>
             </motion.div>
           </CardContent>
         </Card>
@@ -83,5 +110,5 @@ function App() {
         © 2025 Card Battler
       </motion.p>
     </div>
-  )
+  );
 }
