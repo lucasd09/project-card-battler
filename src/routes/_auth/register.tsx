@@ -1,7 +1,7 @@
-import { LoginForm } from "@/components/login-form";
 import { createFileRoute } from "@tanstack/react-router";
+import { RegisterForm } from "@/components/register-form";
 
-export const Route = createFileRoute("/login")({
+export const Route = createFileRoute("/_auth/register")({
   component: RouteComponent,
 });
 
@@ -24,9 +24,9 @@ function RouteComponent() {
 
       <div className="relative z-10 w-[420px] rounded-2xl border-[6px] border-yellow-700 bg-[#3d2412] shadow-2xl p-6">
         <h2 className="text-center text-3xl font-bold text-[#f8e4b2] mb-6 tracking-wide">
-          LOGIN
+          REGISTER
         </h2>
-        <LoginForm />
+        <RegisterForm />
       </div>
     </div>
   );

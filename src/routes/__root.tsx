@@ -19,7 +19,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "TanStack Start Starter",
+        title: "Anime Brawlers",
       },
     ],
     links: [
@@ -36,6 +36,7 @@ export const Route = createRootRoute({
 const queryClient = new QueryClient();
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+
   return (
     <html lang="en">
       <head>
@@ -43,7 +44,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <QueryClientProvider client={queryClient}>
-
           {children}
           <TanstackDevtools
             config={{
